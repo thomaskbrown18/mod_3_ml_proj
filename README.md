@@ -1,8 +1,10 @@
 
-# Module 3 - Machine Learning Project:
+# Reuniting Pets and Owners Using Machine Learning:
+
+## Module 3 Project:
 
 The purpose of this project is to examine data from one of Austin's largest animal shelters and build a machine learning model to predict outcomes of animals as they come in and are processed in the system.  An efficient and intelligent model can help "manage the inventory" of the shelter and get animals adopted more quickly or returned to their owners more quickly when applicable.  <br><br>
-The outcomes are listed below:
+The different outcomes from this shelter are listed below:
 - Transfer           
 - Adoption           
 - Euthanasia        
@@ -12,37 +14,50 @@ The outcomes are listed below:
 - Missing
 - Disposal  <br>
 
-We'll explore these outcomes (as well as the sub categories) in the EDA phase, but with an effective model, we can run the shelter more efficiently leading to happier animals and shelter employees!
+With an effective model to predict outcomes of various animals, we can run the shelter more efficiently leading to happier animals and shelter employees!
 
-Stakeholders: The stakeholders for this project are both the Austin Animal Center and shelters everywhere. The goal is to bring focus to animals that need to be returned to their owners, and the outcome of this project, the algorithm, can likely be adapted to shelters elsewhere.
+Stakeholders: The stakeholders for this project are both the Austin Animal Center and shelters everywhere. The employees of this shelter could benefit from an algorithm that would tell them with reasonable certainty which animals have owners actively searching for them.  With that knowledge, these pets can get out of the shelter much more quickly.<br><br>
+
+Aside from the regular cleaning, I made one major adjustment to the data.  I removed all outcomes aside from Return to Owner (RTO), Transfer, and Adoption.  The reason is simply that I will not create a model that will recommend euthanasia.  This is a no-kill shelter (except when the animal is badly sick), and even if it were a shelter that euthanizes animals, it would be morally wrong to build a model that would suggest killing animals for innocuous features. <br><br>
+
+Here is a quick look at the top three outcomes over time for both dogs and cats:
+![Imgur](https://i.imgur.com/QjqDNdk.png)
+
+These heatmaps can also give you an idea of the different intake conditions and how they can relate to outcome:
+![Imgur](https://i.imgur.com/D8sSNbU.png)<br>
+![Imgur](https://i.imgur.com/YhZCshO.png)
 
 ## Objectives:
 
-Goal: Maximum recall when it comes to the 'return to owner' outcome. We want to be certain that we are giving maximum exposure to pets that need to be returned to their families. It is not as crucial to be sure we're making the adoption/transfer process more efficient, though the more adoptions the better!
+Goal: Maximum recall when it comes to the 'return to owner' outcome. We want to be certain that we are giving maximum exposure to pets that need to be returned to their families. At the same time, though, we need to give exposure to animals that are likely to be adopted as well.  Maximum recall for RTO cannot be our only objective, though.  We need accuracy throughout the entire model to make sure we aren't biased towards one outcome or another.
 
 Success Criteria: 
 - Easy to understand/use machine learning model
 - Easy to implement algorithm
 - High recall when it comes to pets that can be returned to families
+- High recall for pets that are adopted
+- High accuracy for the model as a whole
 
 ## Data:
 
 Data Source: https://www.kaggle.com/aaronschlegel/austin-animal-center-shelter-intakes-and-outcomes?select=aac_intakes_outcomes.csv
 
 The data for this project has been generously provided by the city of Austin in their initiative for open data sources.  The data consists of roughly 80,000 rows where each row displays a different outcome of a given animal in a shelter.  For example, a row might have the data for a month old kitten, domestic short hair breed, that was taken in off the street in an injured condition and adopted a month later.  Each line tells the story of a different dog or cat's journey through the shelter.  
-<br><br>
-There are instances of animals getting euthanized, but as this is a no-kill shelter, I filtered these outcomes out of the data set.  When animals are euthanized at this shelter, it is because they are badly sick or injured.  This is not a call that a machine learning algorithm can make from just a line of data.
-
+<br>
 
 ## Modeling:
 
-For this project I built a few different models, but the ones that stood out were Random Forest due to ease of understanding and speed compared to some other models and XG Boost due to a slight increase in accuracy.  I tuned both models using number of trees, learning rate, max depth, and a few other hyperparameters.  At the end of the day, I was able to acheive roughly 80% accuracy overall for this ternary classification problem.
+For this project I built a few different models, but the ones that stood out were Random Forest due to ease of understanding and speed compared to some other models and XG Boost due to a slight increase in accuracy.  I tuned both models using number of trees, learning rate, max depth, and a few other hyperparameters.  At the end of the day, I was able to acheive roughly 80% accuracy overall for this ternary classification problem.  On top of that, I was able to achieve 94% adoption recall and 80% RTO recall.  I would have loved to have much higher RTO recall, but that can be a challenge for another time, perhaps with better data!
 
 
 ## Model Evaluation:
 
-Here are the confusion matrix plots for the Random Forest and XG Boost models:
+Here is the confusion matrix for the best performing model, the XG Boost:
+![Imgur](https://i.imgur.com/Yl6jEZ8.png)
 
+Additionally, I put together a chart to show the differences between the major models:
+![Imgur](https://i.imgur.com/n3gEEoD.png)
+As you can see, the XG Boost performed the best overall.  While it did not have the best performance in every single category, it is one of the more powerful machine learning models and had consistently excellent performance.  As such, it is the model I would recommend if the Austin Animal Center were to use it in their day to day operations.
 
 ## Conclusion: 
 
@@ -53,9 +68,12 @@ Pets that are the most likely to have their families looking for them should be 
 - Change color upon intake to one of 15 or so values instead of an arbitrarily chosen color.  This has resulted in over 500 different colors recorded in the dataset.
 - Change location data to longitude and latitude data.  This makes it much easier to compare locations.  It can also help when implementing maps on the site.
 - Change breeds to a more standardized list as well.
+- Include a measurement of temperament, perhaps on a scale of 1-10. This can also help with adoption and RTO recall.
 
 Overall, though, this model should help the vast majority of pets find their way to owners.  With some work on the website and internal database applications, we can set up a system to help animals find their homes!
 
-Thanks for reading,
+Please let me know if you have any questions or comments on the code
+
+Thanks for reading!
 
 -Thomas Brown
