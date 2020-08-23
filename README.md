@@ -77,6 +77,8 @@ Here is the confusion matrix for the best performing model, the XG Boost:
 - 1 = Return to Owner
 - 2 = Transfer
 - 3 = Adoption
+<br><br>
+
 ![Imgur](https://i.imgur.com/Yl6jEZ8.png)
 
 Additionally, I put together a chart to show the differences between the major models:
