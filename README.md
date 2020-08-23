@@ -14,7 +14,7 @@ The different outcomes from this shelter are listed below:
 - Missing
 - Disposal  <br>
 
-With an effective model to predict outcomes of various animals, we can run the shelter more efficiently leading to happier animals and shelter employees!
+With an effective model, we can predict animals outcomes as they enter the shelter, and with that knowledge, run the shelter more efficiently leading to happier animals and shelter employees!
 
 Stakeholders: The stakeholders for this project are both the Austin Animal Center and shelters everywhere. The employees of this shelter could benefit from an algorithm that would tell them with reasonable certainty which animals have owners actively searching for them.  With that knowledge, these pets can get out of the shelter much more quickly.<br><br>
 
@@ -63,17 +63,25 @@ As you can see, the XG Boost performed the best overall.  While it did not have 
 
 This exercise in model building has been quite informative.  While pets returned to owners are the smallest of the main groups, it's crucial they get the attention they need instead of being transfered out or adopted to another family.<br><br>
 
-Pets that are the most likely to have their families looking for them should be put front and center on the website so families can find them easily.  Pets likely to be adopted should be a close second.  On top of that, we can improve data collection in the future to improve the model.  There are a few major areas that could help:
+__Returning to Owner:__
+- Pets that are the most likely to have their families looking for them should be put front and center on the website so families can find them easily.
+- The XG Boost model can identify pets with families searching for them almost 85% of the time.  With this knowledge, they can be returned much more quickly than if the families had to search through the entire site or visit the shelter to search for their pet.
 
+__Adoption:__
+- Pets likely to be adopted should be a close second in terms of priority. 
+- Recall for adoption is even higher.  With XG Boost, the shelter can identify 94% of animals that will be adopted.  The sooner they leave the shelter, the better, so it would be helpful to advertise these identified animals more heavily on the site compared to ones likely to be transferred.
+
+__Data Collection:__
+On top of that, we can improve data collection in the future to improve the model.  There are a few major areas that could help:
 - Change color upon intake to one of 15 or so values instead of an arbitrarily chosen color.  This has resulted in over 500 different colors recorded in the dataset.
 - Change location data to longitude and latitude data.  This makes it much easier to compare locations.  It can also help when implementing maps on the site.
-- Change breeds to a more standardized list as well.
-- Include a measurement of temperament, perhaps on a scale of 1-10. This can also help with adoption and RTO recall.
-
+- Include a measurement of temperament, perhaps on a scale of 1-10.  This can also help with adoption and RTO recall.
+- Change breeds to a more standardized list as well.  Like color, this model is too unwieldy to use effectively.
+<br>
 Overall, though, this model should help the vast majority of pets find their way to owners.  With some work on the website and internal database applications, we can set up a system to help animals find their homes!
-
+<br>
 Please let me know if you have any questions or comments on the code
-
+<br>
 Thanks for reading!
 
 -Thomas Brown
