@@ -52,7 +52,31 @@ For this project I built a few different models, but the ones that stood out wer
 
 ## Model Evaluation:
 
+Measuring accuracy for multiclass classification problems can be tricky.  It's easy to get caught up in dizzying array of possible accuracy metrics one can use.  Here is the list I settled on for this ternary classification puzzle:
+<br>
+- __Training Accuracy__ 
+    - General accuracy of the training set - useful to make sure you're not overfitting the model
+- __Testing Accuracy__
+    - Ratio of correct classifications to total classifications - useful metric, but there's more to dig into!
+- __RTO Precision__ 
+    - Ratio of correct RTO classifications to correct RTO + False positives 
+    - Useful to make sure you're not biased too heavily and making too many false positives
+- __RTO Recall__ 
+    - Ratio of correct RTO classifications to correct RTO + the ones the model missed i.e. false negatives
+    - Useful to see what ratio of the target class you're identifying, i.e. not missing anyone
+- __Adoption Precision__ 
+    - Same as RTO Precision but with the adoption metric
+- __Adoption Recall__ 
+    - Same as RTO Recall but with the adoption metric
+<br>
+
+
+A few things may stand out.  The first glaring issue is the lack of metrics around the 'Transfer' outcome.  I chose to ignore this as adoption and return to owner are the main important outcomes here.  In most cases, transferring an animal occurs when it can neither be adopted or returned to an owner.  For my model to be effective, I wanted to make sure that every pet with an owner searching for it got returned home, and every pet that is able to be adopted is adopted.  The above list of metrics tells me everything I need to know in that regard.
+<br><br>
 Here is the confusion matrix for the best performing model, the XG Boost:
+- 1 = Return to Owner
+- 2 = Transfer
+- 3 = Adoption
 ![Imgur](https://i.imgur.com/Yl6jEZ8.png)
 
 Additionally, I put together a chart to show the differences between the major models:
